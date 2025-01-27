@@ -1,12 +1,82 @@
 [
   {
-    "type": "source_file",
+    "type": "left",
     "named": true,
-    "root": true,
     "fields": {}
   },
   {
-    "type": "hello",
+    "type": "primary_left",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "primary_right",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "right",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "left",
+          "named": true
+        },
+        {
+          "type": "primary_left",
+          "named": true
+        },
+        {
+          "type": "primary_right",
+          "named": true
+        },
+        {
+          "type": "right",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "#(",
+    "named": false
+  },
+  {
+    "type": "#(|",
+    "named": false
+  },
+  {
+    "type": "#[",
+    "named": false
+  },
+  {
+    "type": "#[|",
+    "named": false
+  },
+  {
+    "type": ")#",
+    "named": false
+  },
+  {
+    "type": "]#",
+    "named": false
+  },
+  {
+    "type": "|)#",
+    "named": false
+  },
+  {
+    "type": "|]#",
     "named": false
   }
 ]
