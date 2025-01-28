@@ -11,38 +11,46 @@ module.exports = grammar({
   name: "helix",
 
   rules: {
-    source_file: ($) => repeat($._definition),
+    source_file: ($) =>
+      repeat(
+        choice(
+          $.primary_left,
+          $.primary_right,
+          $.right,
+          $.left,
+          $.text,
+          $.text_primary,
+        ),
+      ),
 
-    _definition: ($) =>
-      choice($.primary_left, $.primary_right, $.left, $.right, $.text),
+    text_primary: () => /[^#\[\]\|]+/,
 
-    // TODO: figure out how to allow more characters as text.
-    // Ideally we would allow anything other than our keyword characters,
-    // but I'm not sure how to do that
-    text: () => /[\d\w\s]+/,
-
-    _outer_text_token: () => /[^#]/,
-
-    _opening_primary_left: () => "#[|",
-    _closing_primary_left: () => "]#",
-
+    opening_primary_left: () => "#[|",
+    closing_primary_left: () => "]#",
     primary_left: ($) =>
-      seq($._opening_primary_left, $.text, $._closing_primary_left),
+      seq(
+        $.opening_primary_left,
+        repeat($.text_primary),
+        $.closing_primary_left,
+      ),
 
-    _opening_primary_right: () => "#[",
-    _closing_primary_right: () => "|]#",
-
+    opening_primary_right: () => "#[",
+    closing_primary_right: () => "|]#",
     primary_right: ($) =>
-      seq($._opening_primary_right, $.text, $._closing_primary_right),
+      seq(
+        $.opening_primary_right,
+        repeat($.text_primary),
+        $.closing_primary_right,
+      ),
 
-    _opening_left: () => "#(|",
-    _closing_left: () => ")#",
+    text: () => /[^#\(\)\|]+/,
 
-    left: ($) => seq($._opening_left, $.text, $._closing_left),
+    opening_right: () => "#(",
+    closing_right: () => "|)#",
+    right: ($) => seq($.opening_right, repeat($.text), $.closing_right),
 
-    _opening_right: () => "#(",
-    _closing_right: () => "|)#",
-
-    right: ($) => seq($._opening_right, $.text, $._closing_right),
+    opening_left: () => "#(|",
+    closing_left: () => ")#",
+    left: ($) => seq($.opening_left, repeat($.text), $.closing_left),
   },
 });

@@ -5,48 +5,44 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_definition"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "primary_left"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "primary_right"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "right"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "left"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "text"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "text_primary"
+          }
+        ]
       }
     },
-    "_definition": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "primary_left"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "primary_right"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "left"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "right"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_text"
-        }
-      ]
-    },
-    "_text": {
+    "text_primary": {
       "type": "PATTERN",
-      "value": "[\\d\\w\\s]+"
+      "value": "[^#\\[\\]\\|]+"
     },
-    "_outer_text_token": {
-      "type": "PATTERN",
-      "value": "[^#]"
-    },
-    "_opening_primary_left": {
+    "opening_primary_left": {
       "type": "STRING",
       "value": "#[|"
     },
-    "_closing_primary_left": {
+    "closing_primary_left": {
       "type": "STRING",
       "value": "]#"
     },
@@ -55,23 +51,26 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_opening_primary_left"
+          "name": "opening_primary_left"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text_primary"
+          }
         },
         {
           "type": "SYMBOL",
-          "name": "_text"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_closing_primary_left"
+          "name": "closing_primary_left"
         }
       ]
     },
-    "_opening_primary_right": {
+    "opening_primary_right": {
       "type": "STRING",
       "value": "#["
     },
-    "_closing_primary_right": {
+    "closing_primary_right": {
       "type": "STRING",
       "value": "|]#"
     },
@@ -80,48 +79,30 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_opening_primary_right"
+          "name": "opening_primary_right"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text_primary"
+          }
         },
         {
           "type": "SYMBOL",
-          "name": "_text"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_closing_primary_right"
+          "name": "closing_primary_right"
         }
       ]
     },
-    "_opening_left": {
-      "type": "STRING",
-      "value": "#(|"
+    "text": {
+      "type": "PATTERN",
+      "value": "[^#\\(\\)\\|]+"
     },
-    "_closing_left": {
-      "type": "STRING",
-      "value": ")#"
-    },
-    "left": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_opening_left"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_text"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_closing_left"
-        }
-      ]
-    },
-    "_opening_right": {
+    "opening_right": {
       "type": "STRING",
       "value": "#("
     },
-    "_closing_right": {
+    "closing_right": {
       "type": "STRING",
       "value": "|)#"
     },
@@ -130,15 +111,46 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_opening_right"
+          "name": "opening_right"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
         },
         {
           "type": "SYMBOL",
-          "name": "_text"
+          "name": "closing_right"
+        }
+      ]
+    },
+    "opening_left": {
+      "type": "STRING",
+      "value": "#(|"
+    },
+    "closing_left": {
+      "type": "STRING",
+      "value": ")#"
+    },
+    "left": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "opening_left"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
         },
         {
           "type": "SYMBOL",
-          "name": "_closing_right"
+          "name": "closing_left"
         }
       ]
     }

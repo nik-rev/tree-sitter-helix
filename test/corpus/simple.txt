@@ -1,0 +1,6 @@
+This
+
+is text #[|lol]#.
+
+and more #(text|)!
+
