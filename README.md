@@ -41,15 +41,16 @@ Generates the following tree:
 
 ```scm
 (source_file [0, 0] - [4, 0]
-  (text [0, 0] - [0, 6])
-  (left_primary [0, 6] - [0, 16]
-    (start_left_primary [0, 6] - [0, 9])
-    (cursor_primary [0, 9] - [0, 10])
-    (char [0, 10] - [0, 11])
-    (char [0, 11] - [0, 12])
-    (char [0, 12] - [0, 13])
-    (char [0, 13] - [0, 14])
-    (end_left_primary [0, 14] - [0, 16]))
+; hello #[|world]#
+  (text [0, 0] - [0, 6]) ; hello
+  (left_primary [0, 6] - [0, 16] ; #[|world]#
+    (start_left_primary [0, 6] - [0, 9]) ; #[|
+    (cursor_primary [0, 9] - [0, 10]) ; w
+    (char [0, 10] - [0, 11]) ; o
+    (char [0, 11] - [0, 12]) ; r
+    (char [0, 12] - [0, 13]) ; l
+    (char [0, 13] - [0, 14]) ; d
+    (end_left_primary [0, 14] - [0, 16]))  ; ]#
   (text [0, 16] - [1, 6])
   (right_primary [1, 6] - [1, 16]
     (start_right_primary [1, 6] - [1, 8])
