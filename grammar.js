@@ -12,60 +12,39 @@ module.exports = grammar({
 
   rules: {
     source_file: ($) =>
-      repeat(choice($.primary_left, $.primary_right, $.right, $.left, $.text)),
+      repeat(choice($.left_primary, $.right_primary, $.right, $.left, $.text)),
 
     _text_primary: () => /[^#\[\]\|]+/,
 
-    _opening_primary_left: () => "#[|",
-    _closing_primary_left: () => "]#",
-    primary_left: ($) =>
+    start_left_primary: () => "#[|",
+    end_left_primary: () => "]#",
+    left_primary: ($) =>
       seq(
-        alias($._opening_primary_left, $.punctuation),
+        $.start_left_primary,
         repeat(alias($._text_primary, $.text)),
-        alias($._closing_primary_left, $.punctuation),
+        $.end_left_primary,
       ),
 
-    _opening_primary_right: () => "#[",
-    _closing_primary_right: () => "|]#",
-    primary_right: ($) =>
+    start_right_primary: () => "#[",
+    end_right_primary: () => "|]#",
+    right_primary: ($) =>
       seq(
-        alias($._opening_primary_right, $.punctuation),
+        $.start_right_primary,
         repeat(alias($._text_primary, $.text)),
-        alias($._closing_primary_right, $.punctuation),
+        $.end_right_primary,
       ),
 
     text: ($) => choice($._text, $._text_primary),
 
     _text: () => /[^#\(\)\|]+/,
 
-    _opening_right: () => "#(",
-    _closing_right: () => "|)#",
+    start_right: () => "#(",
+    end_right: () => "|)#",
     right: ($) =>
-      seq(
-        alias($._opening_right, $.punctuation),
-        repeat(alias($._text, $.text)),
-        alias($._closing_right, $.punctuation),
-      ),
+      seq($.start_right, repeat(alias($._text, $.text)), $.end_right),
 
-    punctuation: ($) =>
-      choice(
-        $._closing_left,
-        $._opening_left,
-        $._closing_right,
-        $._opening_right,
-        $._closing_primary_left,
-        $._opening_primary_left,
-        $._closing_primary_right,
-        $._opening_primary_right,
-      ),
-
-    _opening_left: () => "#(|",
-    _closing_left: () => ")#",
-    left: ($) =>
-      seq(
-        alias($._opening_left, $.punctuation),
-        repeat(alias($._text, $.text)),
-        alias($._closing_left, $.punctuation),
-      ),
+    start_left: () => "#(|",
+    end_left: () => ")#",
+    left: ($) => seq($.start_left, repeat(alias($._text, $.text)), $.end_left),
   },
 });

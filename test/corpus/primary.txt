@@ -1,0 +1,32 @@
+=======================
+Primary selection with cursor on the left
+=======================
+primary with cursor on the left?!!#[l
+
+
+
+
+ater|]#.
+----------------------
+(source_file
+  (text)
+  (right_primary
+    (start_right_primary)
+    (text)
+    (end_right_primary))
+  (text))
+
+=======================
+Primary selection with cursor on the right
+=======================
+This i#[s a (p)r
+imary s|]#election with cursor on the right.
+----------------------
+(source_file
+  (text)
+  (right_primary
+    (start_right_primary)
+    (text)
+    (end_right_primary))
+  (text))
+  

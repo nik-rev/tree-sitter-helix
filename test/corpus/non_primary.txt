@@ -1,0 +1,31 @@
+=======================
+Selection with cursor on the left
+=======================
+just a selection with c#(|ursor o)#n the left
+----------------------
+(source_file
+  (text)
+  (left
+    (start_left)
+    (text)
+    (end_left))
+  (text))
+=======================
+Selection with cursor on the right
+=======================
+This is a
+#(b
+a
+[s]
+i|)#
+c
+Selection with cursor on the right
+----------------------
+(source_file
+(text)
+(right
+  (start_right)
+  (text)
+  (end_right))
+(text))
+
