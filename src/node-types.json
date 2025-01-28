@@ -8,11 +8,7 @@
       "required": true,
       "types": [
         {
-          "type": "closing_left",
-          "named": true
-        },
-        {
-          "type": "opening_left",
+          "type": "punctuation",
           "named": true
         },
         {
@@ -31,15 +27,11 @@
       "required": true,
       "types": [
         {
-          "type": "closing_primary_left",
+          "type": "punctuation",
           "named": true
         },
         {
-          "type": "opening_primary_left",
-          "named": true
-        },
-        {
-          "type": "text_primary",
+          "type": "text",
           "named": true
         }
       ]
@@ -54,19 +46,20 @@
       "required": true,
       "types": [
         {
-          "type": "closing_primary_right",
+          "type": "punctuation",
           "named": true
         },
         {
-          "type": "opening_primary_right",
-          "named": true
-        },
-        {
-          "type": "text_primary",
+          "type": "text",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "punctuation",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "right",
@@ -77,11 +70,7 @@
       "required": true,
       "types": [
         {
-          "type": "closing_right",
-          "named": true
-        },
-        {
-          "type": "opening_right",
+          "type": "punctuation",
           "named": true
         },
         {
@@ -119,52 +108,45 @@
         {
           "type": "text",
           "named": true
-        },
-        {
-          "type": "text_primary",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "closing_left",
-    "named": true
-  },
-  {
-    "type": "closing_primary_left",
-    "named": true
-  },
-  {
-    "type": "closing_primary_right",
-    "named": true
-  },
-  {
-    "type": "closing_right",
-    "named": true
-  },
-  {
-    "type": "opening_left",
-    "named": true
-  },
-  {
-    "type": "opening_primary_left",
-    "named": true
-  },
-  {
-    "type": "opening_primary_right",
-    "named": true
-  },
-  {
-    "type": "opening_right",
-    "named": true
-  },
-  {
     "type": "text",
-    "named": true
+    "named": true,
+    "fields": {}
   },
   {
-    "type": "text_primary",
-    "named": true
+    "type": "#(",
+    "named": false
+  },
+  {
+    "type": "#(|",
+    "named": false
+  },
+  {
+    "type": "#[",
+    "named": false
+  },
+  {
+    "type": "#[|",
+    "named": false
+  },
+  {
+    "type": ")#",
+    "named": false
+  },
+  {
+    "type": "]#",
+    "named": false
+  },
+  {
+    "type": "|)#",
+    "named": false
+  },
+  {
+    "type": "|]#",
+    "named": false
   }
 ]

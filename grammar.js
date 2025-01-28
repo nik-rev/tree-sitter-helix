@@ -12,45 +12,60 @@ module.exports = grammar({
 
   rules: {
     source_file: ($) =>
-      repeat(
-        choice(
-          $.primary_left,
-          $.primary_right,
-          $.right,
-          $.left,
-          $.text,
-          $.text_primary,
-        ),
-      ),
+      repeat(choice($.primary_left, $.primary_right, $.right, $.left, $.text)),
 
-    text_primary: () => /[^#\[\]\|]+/,
+    _text_primary: () => /[^#\[\]\|]+/,
 
-    opening_primary_left: () => "#[|",
-    closing_primary_left: () => "]#",
+    _opening_primary_left: () => "#[|",
+    _closing_primary_left: () => "]#",
     primary_left: ($) =>
       seq(
-        $.opening_primary_left,
-        repeat($.text_primary),
-        $.closing_primary_left,
+        alias($._opening_primary_left, $.punctuation),
+        repeat(alias($._text_primary, $.text)),
+        alias($._closing_primary_left, $.punctuation),
       ),
 
-    opening_primary_right: () => "#[",
-    closing_primary_right: () => "|]#",
+    _opening_primary_right: () => "#[",
+    _closing_primary_right: () => "|]#",
     primary_right: ($) =>
       seq(
-        $.opening_primary_right,
-        repeat($.text_primary),
-        $.closing_primary_right,
+        alias($._opening_primary_right, $.punctuation),
+        repeat(alias($._text_primary, $.text)),
+        alias($._closing_primary_right, $.punctuation),
       ),
 
-    text: () => /[^#\(\)\|]+/,
+    text: ($) => choice($._text, $._text_primary),
 
-    opening_right: () => "#(",
-    closing_right: () => "|)#",
-    right: ($) => seq($.opening_right, repeat($.text), $.closing_right),
+    _text: () => /[^#\(\)\|]+/,
 
-    opening_left: () => "#(|",
-    closing_left: () => ")#",
-    left: ($) => seq($.opening_left, repeat($.text), $.closing_left),
+    _opening_right: () => "#(",
+    _closing_right: () => "|)#",
+    right: ($) =>
+      seq(
+        alias($._opening_right, $.punctuation),
+        repeat(alias($._text, $.text)),
+        alias($._closing_right, $.punctuation),
+      ),
+
+    punctuation: ($) =>
+      choice(
+        $._closing_left,
+        $._opening_left,
+        $._closing_right,
+        $._opening_right,
+        $._closing_primary_left,
+        $._opening_primary_left,
+        $._closing_primary_right,
+        $._opening_primary_right,
+      ),
+
+    _opening_left: () => "#(|",
+    _closing_left: () => ")#",
+    left: ($) =>
+      seq(
+        alias($._opening_left, $.punctuation),
+        repeat(alias($._text, $.text)),
+        alias($._closing_left, $.punctuation),
+      ),
   },
 });
