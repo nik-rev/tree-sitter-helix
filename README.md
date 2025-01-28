@@ -1,6 +1,6 @@
 # tree-sitter-multicursor
 
-`.multicursor` is a file type that allows rendering multiple cursors. It was created for the [Helix Editor](https://github.com/helix-editor/helix)
+`.multicursor` is a file type that allows rendering multiple cursors. It was created for the [Helix Editor](https://github.com/multicursor-editor/multicursor)
 
 It supports 4 types of selections:
 

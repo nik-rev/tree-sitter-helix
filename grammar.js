@@ -1,5 +1,5 @@
 /**
- * @file A parser for the extremely simple Helix language
+ * @file A parser for the multicursor file type
  * @author Nikita Revenco <pm@nikrev.com>
  * @license MIT
  */
@@ -8,7 +8,7 @@
 // @ts-check
 
 module.exports = grammar({
-  name: "helix",
+  name: "multicursor",
 
   rules: {
     source_file: ($) =>

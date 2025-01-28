@@ -2,8 +2,8 @@ ifeq ($(OS),Windows_NT)
 $(error Windows is not supported)
 endif
 
-LANGUAGE_NAME := tree-sitter-helix
-HOMEPAGE_URL := https://github.com/nik-rev/tree-sitter-helix
+LANGUAGE_NAME := tree-sitter-multicursor
+HOMEPAGE_URL := https://github.com/nik-rev/tree-sitter-multicursor
 VERSION := 0.1.0
 
 # repository

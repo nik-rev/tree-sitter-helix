@@ -1,4 +1,4 @@
-module github.com/nik-rev/tree-sitter-helix
+module github.com/nik-rev/tree-sitter-multicursor
 
 go 1.22
 

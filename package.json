@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-helix",
+  "name": "tree-sitter-multicursor",
   "version": "0.1.0",
   "description": "A parser for the extremely simple Helix language",
-  "repository": "https://github.com/nik-rev/tree-sitter-helix",
+  "repository": "https://github.com/nik-rev/tree-sitter-multicursor",
   "license": "MIT",
   "author": {
     "name": "Nikita Revenco",
@@ -15,7 +15,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "helix"
+    "multicursor"
   ],
   "files": [
     "grammar.js",

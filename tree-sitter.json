@@ -1,13 +1,13 @@
 {
   "grammars": [
     {
-      "name": "helix",
+      "name": "multicursor",
       "camelcase": "Helix",
-      "scope": "source.helix",
+      "scope": "source.multicursor",
       "file-types": [
-        ".helix"
+        ".multicursor"
       ],
-      "injection-regex": "^helix$"
+      "injection-regex": "^multicursor$"
     }
   ],
   "metadata": {
@@ -22,7 +22,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/nik-rev/tree-sitter-helix"
+      "repository": "https://github.com/nik-rev/tree-sitter-multicursor"
     }
   },
   "bindings": {
