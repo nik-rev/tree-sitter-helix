@@ -7,7 +7,12 @@ just a selection with c#(|ursor o)#n the left
   (text)
   (left
     (start_left)
-    (text)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
     (end_left))
   (text))
 =======================
@@ -25,7 +30,12 @@ Selection with cursor on the right
 (text)
 (right
   (start_right)
-  (text)
+  (char)
+  (char)
+  (char)
+  (char)
+  (char)
+  (char)
   (end_right))
 (text))
 

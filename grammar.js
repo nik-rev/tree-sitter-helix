@@ -14,14 +14,17 @@ module.exports = grammar({
     source_file: ($) =>
       repeat(choice($.left_primary, $.right_primary, $.right, $.left, $.text)),
 
+    char: ($) => choice($.char_primary, $.char_regular),
     _text_primary: () => /[^#\[\]\|]+/,
+    char_primary: () => /[^#\[\]\|]/,
+    char_regular: () => /[^#\(\)\|]/,
 
     start_left_primary: () => "#[|",
     end_left_primary: () => "]#",
     left_primary: ($) =>
       seq(
         $.start_left_primary,
-        repeat(alias($._text_primary, $.text)),
+        repeat(alias($.char_primary, $.char)),
         $.end_left_primary,
       ),
 
@@ -30,7 +33,7 @@ module.exports = grammar({
     right_primary: ($) =>
       seq(
         $.start_right_primary,
-        repeat(alias($._text_primary, $.text)),
+        repeat(alias($.char_primary, $.char)),
         $.end_right_primary,
       ),
 
@@ -41,10 +44,11 @@ module.exports = grammar({
     start_right: () => "#(",
     end_right: () => "|)#",
     right: ($) =>
-      seq($.start_right, repeat(alias($._text, $.text)), $.end_right),
+      seq($.start_right, repeat(alias($.char_regular, $.char)), $.end_right),
 
     start_left: () => "#(|",
     end_left: () => ")#",
-    left: ($) => seq($.start_left, repeat(alias($._text, $.text)), $.end_left),
+    left: ($) =>
+      seq($.start_left, repeat(alias($.char_regular, $.char)), $.end_left),
   },
 });

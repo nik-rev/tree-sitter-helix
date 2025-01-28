@@ -12,7 +12,11 @@ ater|]#.
   (text)
   (right_primary
     (start_right_primary)
-    (text)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
     (end_right_primary))
   (text))
 
@@ -26,7 +30,18 @@ imary s|]#election with cursor on the right.
   (text)
   (right_primary
     (start_right_primary)
-    (text)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
+    (char)
     (end_right_primary))
   (text))
   

@@ -8,15 +8,15 @@
       "required": true,
       "types": [
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "end_left",
           "named": true
         },
         {
           "type": "start_left",
-          "named": true
-        },
-        {
-          "type": "text",
           "named": true
         }
       ]
@@ -31,15 +31,15 @@
       "required": true,
       "types": [
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "end_left_primary",
           "named": true
         },
         {
           "type": "start_left_primary",
-          "named": true
-        },
-        {
-          "type": "text",
           "named": true
         }
       ]
@@ -54,15 +54,15 @@
       "required": true,
       "types": [
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "end_right",
           "named": true
         },
         {
           "type": "start_right",
-          "named": true
-        },
-        {
-          "type": "text",
           "named": true
         }
       ]
@@ -77,15 +77,15 @@
       "required": true,
       "types": [
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "end_right_primary",
           "named": true
         },
         {
           "type": "start_right_primary",
-          "named": true
-        },
-        {
-          "type": "text",
           "named": true
         }
       ]
@@ -127,6 +127,10 @@
     "type": "text",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "char",
+    "named": true
   },
   {
     "type": "end_left",
