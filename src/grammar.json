@@ -55,6 +55,24 @@
       "type": "PATTERN",
       "value": "[^#\\(\\)\\|]"
     },
+    "cursor_primary": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "char_primary"
+      },
+      "named": false,
+      "value": "cursor_primary"
+    },
+    "cursor": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "char_regular"
+      },
+      "named": false,
+      "value": "cursor"
+    },
     "start_left_primary": {
       "type": "STRING",
       "value": "#[|"
@@ -69,6 +87,10 @@
         {
           "type": "SYMBOL",
           "name": "start_left_primary"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cursor_primary"
         },
         {
           "type": "REPEAT",
@@ -114,6 +136,10 @@
             "named": true,
             "value": "char"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cursor_primary"
         },
         {
           "type": "SYMBOL",
@@ -167,6 +193,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "cursor"
+        },
+        {
+          "type": "SYMBOL",
           "name": "end_right"
         }
       ]
@@ -185,6 +215,10 @@
         {
           "type": "SYMBOL",
           "name": "start_left"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cursor"
         },
         {
           "type": "REPEAT",

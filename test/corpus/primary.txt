@@ -16,7 +16,7 @@ ater|]#.
     (char)
     (char)
     (char)
-    (char)
+    (cursor_primary)
     (end_right_primary))
   (text))
 
@@ -30,7 +30,7 @@ imary s|]#election with cursor on the right.
   (text)
   (right_primary
     (start_right_primary)
-    (char)
+    (cursor_primary)
     (char)
     (char)
     (char)
