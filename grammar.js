@@ -14,6 +14,16 @@ module.exports = grammar({
     source_file: ($) =>
       repeat(choice($.left_primary, $.right_primary, $.right, $.left, $.text)),
 
+    start_right_primary: () => "#[",
+    end_right_primary: () => "|]#",
+    right_primary: ($) =>
+      seq(
+        $.start_right_primary,
+        repeat(alias($.char_primary, $.char)),
+        $.cursor_primary,
+        $.end_right_primary,
+      ),
+
     char: ($) => choice($.char_primary, $.char_regular),
     _text_primary: () => /[^#\[\]\|]+/,
     char_primary: () => /[^#\[\]\|]/,
@@ -29,16 +39,6 @@ module.exports = grammar({
         $.cursor_primary,
         repeat(alias($.char_primary, $.char)),
         $.end_left_primary,
-      ),
-
-    start_right_primary: () => "#[",
-    end_right_primary: () => "|]#",
-    right_primary: ($) =>
-      seq(
-        $.start_right_primary,
-        repeat(alias($.char_primary, $.char)),
-        $.cursor_primary,
-        $.end_right_primary,
       ),
 
     text: ($) => choice($._text, $._text_primary),
